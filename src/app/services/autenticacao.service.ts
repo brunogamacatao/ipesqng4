@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 import { Usuario } from '../model/usuario';
 
-const URL_BASE: string = 'http://localhost:3000/user';
+const URL_BASE: string = 'http://45.79.104.38/user';
 
 @Injectable()
 export class AutenticacaoService {
