@@ -1,17 +1,19 @@
-<form (ngSubmit)="login()" class="form-signin">
-  <h2 class="form-signin-heading">Identifique-se</h2>
+<div class="form-login">
+  <form (ngSubmit)="login()" class="form-signin">
+    <h2 class="form-signin-heading">Identifique-se</h2>
 
-  <div class="alert alert-danger" role="alert" *ngIf="mensagemDeErro">
-    {{mensagemDeErro}}
-  </div>
+    <div class="alert alert-danger" role="alert" *ngIf="mensagemDeErro">
+      {{mensagemDeErro}}
+    </div>
 
-  <label class="sr-only">Nome de usuário</label>
-  <input [(ngModel)]="username" type="text" name="username" class="form-control" placeholder="Nome de usuário" required autofocus>
-  <label class="sr-only">Senha</label>
-  <input [(ngModel)]="password" type="password" name="password" class="form-control" placeholder="Senha" required>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-</form>  
+    <label class="sr-only">Nome de usuário</label>
+    <input [(ngModel)]="username" type="text" name="username" class="form-control" placeholder="Nome de usuário" required autofocus>
+    <label class="sr-only">Senha</label>
+    <input [(ngModel)]="password" type="password" name="password" class="form-control" placeholder="Senha" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+  </form>  
 
-<img src="/assets/imagens/logo_grande.png" alt="IPESQ">
+  <img src="/assets/imagens/logo_grande.png" alt="IPESQ">
 
-<ipesq-loading [show]="carregando"></ipesq-loading>
+  <ipesq-loading [show]="carregando"></ipesq-loading>
+</div>

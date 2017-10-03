@@ -1,0 +1,33 @@
+<div [ngSwitch]="pergunta.tipoControle" [formGroup]="form">
+
+  <!-- Campo de texto -->
+  <div class="form-group" *ngSwitchCase="'textbox'">
+    <label class="form-control-label" [attr.for]="pergunta.chave">{{pergunta.label}}</label>
+    <input  [id]="pergunta.chave" 
+            [formControlName]="pergunta.chave"
+            [type]="pergunta.tipo" 
+            class="form-control">
+  </div>
+
+  <!-- Campo Dropdown -->
+  <div class="form-group" *ngSwitchCase="'dropdown'" >
+    <label class="form-control-label" [attr.for]="pergunta.chave">{{pergunta.label}}</label>
+    <select [id]="pergunta.chave" 
+            [formControlName]="pergunta.chave"
+            class="form-control">
+      <option *ngFor="let op of pergunta.opcoes" [value]="op.chave">{{op.valor}}</option>
+    </select>
+  </div>
+
+  <!-- Grupo de Campos -->
+  <div *ngSwitchCase="'group'" [formGroupName]="pergunta.chave" class="card">
+    <div class="card-header">
+      {{pergunta.label}}
+    </div>
+    <div class="card-body">
+      <ipesq-formgen [perguntas]="pergunta.perguntas" [form]="form.get(pergunta.chave)"></ipesq-formgen>
+    </div>
+  </div>
+</div> 
+
+<div class="errorMessage" *ngIf="!isValid">O campo {{pergunta.label}} é obrigatório</div>
