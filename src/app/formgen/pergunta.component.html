@@ -1,4 +1,6 @@
-<div [ngSwitch]="pergunta.tipoControle" [formGroup]="form">
+<div  [ngSwitch]="pergunta.tipoControle" 
+      [formGroup]="form" 
+      *ngIf="pergunta.dependeDe === '' || form.get(pergunta.dependeDe).value">
 
   <!-- Campo de texto -->
   <div class="form-group" *ngSwitchCase="'textbox'">
@@ -19,9 +21,47 @@
     </select>
   </div>
 
+  <!-- Campo Sim/Não -->
+  <div class="form-group" *ngSwitchCase="'simnao'" >
+    <label class="form-control-label" [attr.for]="pergunta.chave">{{pergunta.label}}</label>
+    <div class="form-control">
+      <label class="custom-control custom-radio">
+        <input [id]="pergunta.chave + 'radio1'" [formControlName]="pergunta.chave" [value]="true" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Sim</span>
+      </label>
+      <label class="custom-control custom-radio">
+        <input [id]="pergunta.chave + 'radio2'" [formControlName]="pergunta.chave" [value]="false" type="radio" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Não</span>
+      </label>      
+    </div>
+  </div>
+
+  <!-- Campo de Data -->
+  <div class="form-group" *ngSwitchCase="'data'">
+    <label class="form-control-label" [attr.for]="pergunta.chave">{{pergunta.label}}</label>
+    <input  [id]="pergunta.chave" 
+            [formControlName]="pergunta.chave"
+            type="date" 
+            class="form-control">
+  </div>
+
+  <!-- Campo de Número -->
+  <div class="form-group" *ngSwitchCase="'numero'">
+    <label class="form-control-label" [attr.for]="pergunta.chave">{{pergunta.label}}</label>
+    <input  [id]="pergunta.chave" 
+            [formControlName]="pergunta.chave"
+            type="number"
+            [min]="pergunta.min"
+            [max]="pergunta.max"
+            [step]="pergunta.step"
+            class="form-control">
+  </div>
+
   <!-- Grupo de Campos -->
-  <div *ngSwitchCase="'group'" [formGroupName]="pergunta.chave" class="card">
-    <div class="card-header">
+  <div *ngSwitchCase="'group'" [formGroupName]="pergunta.chave" class="card border-primary mb-3">
+    <div class="card-header bg-primary text-white" [id]="'card_' + pergunta.chave">
       {{pergunta.label}}
     </div>
     <div class="card-body">

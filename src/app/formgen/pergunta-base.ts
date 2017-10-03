@@ -7,6 +7,7 @@ export abstract class PerguntaBase<T> {
   requerida: boolean;
   ordem: number;
   tipoControle: string;
+  dependeDe: string;
 
   constructor(opcoes: {
     valor?: T,
@@ -14,7 +15,8 @@ export abstract class PerguntaBase<T> {
     label?: string,
     requerida?: boolean,
     ordem?: number,
-    tipoControle?: string
+    tipoControle?: string,
+    dependeDe?: string
   } = {}) {
     this.valor        = opcoes.valor;
     this.chave        = opcoes.chave || '';
@@ -22,12 +24,12 @@ export abstract class PerguntaBase<T> {
     this.requerida    = !!opcoes.requerida;
     this.ordem        = opcoes.ordem === undefined ? 1 : opcoes.ordem;
     this.tipoControle = opcoes.tipoControle || '';
+    this.dependeDe    = opcoes.dependeDe || '';
   }
 
   toFormControl(): AbstractControl {
     return this.requerida ? 
       new FormControl(this.valor || '', Validators.required) :
       new FormControl(this.valor || '');
-
   }
 }

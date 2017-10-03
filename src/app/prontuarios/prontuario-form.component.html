@@ -1,15 +1,35 @@
-<div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <ipesq-formgen [perguntas]="perguntas" [form]="form"></ipesq-formgen>
-
-    <div class="form-group row">
-      <div class="col-sm-12">
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
-      </div>
+<div class="row">
+  <div class="col-md-2">
+    <div class="sidebar">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a id="link_card_mae" class="nav-link active" pageScroll href="#card_mae">Dados da Mãe <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a id="link_card_enxatema" class="nav-link" pageScroll href="#card_enxatema">Exantema</a>
+        </li>
+        <li class="nav-item">
+          <a id="link_card_crianca" class="nav-link" pageScroll href="#card_crianca">Dados da Criança</a>
+        </li>
+        <li class="nav-item">
+          <a id="link_botoes" class="nav-link" pageScroll href="#botoes">Botões</a>
+        </li>
+      </ul>
     </div>
-  </form>
+  </div>
+  <div class="col-md-10">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <ipesq-formgen [perguntas]="perguntas" [form]="form"></ipesq-formgen>
 
-  <div *ngIf="payLoad" class="form-row">
-    <strong>Salvos os seguintes valores</strong><br>{{payLoad}}
+      <div class="form-group row" id="botoes">
+        <div class="col-sm-12">
+          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Salvar</button>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="payLoad" class="form-row">
+      <strong>Salvos os seguintes valores</strong><br>{{payLoad}}
+    </div>
   </div>
 </div>

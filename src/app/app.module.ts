@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 // Serviços
 import { AutenticacaoService } from './services/autenticacao.service';
@@ -54,6 +55,7 @@ const rotas: Routes = [
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2PageScrollModule,
     RouterModule.forRoot(rotas)
   ],
   providers: [

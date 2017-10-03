@@ -1,0 +1,23 @@
+/*
+ * Sidebar
+ */
+
+/* Sidebar navigation */
+.sidebar {
+  position: fixed;
+  padding-left: 0;
+  padding-right: 0;
+  width: 15%;
+}
+
+.sidebar .nav {
+  margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+  margin-left: 0;
+}
